@@ -1,6 +1,5 @@
 package com.openlm.userimport.api.xml;
 
-import com.sun.xml.internal.txw2.annotation.XmlCDATA;
 
 import javax.xml.bind.annotation.XmlAttribute;
 import javax.xml.bind.annotation.XmlRootElement;
@@ -17,7 +16,6 @@ public class Parameter {
     @XmlTransient
     String value;
 
-    @XmlCDATA
     @XmlValue
     public String getValue() {
         return value;
