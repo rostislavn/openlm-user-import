@@ -202,7 +202,7 @@ public class Main{
 
     private static File validateCommandLine(String[] args) {
         if (args.length == 0) {
-            System.out.println("lack of arguments");
+            System.out.println("Error: lack of arguments. Use CSV file name as the argument.");
             System.exit(0);
         }
         File csv = new File(args[0]);
