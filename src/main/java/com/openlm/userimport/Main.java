@@ -184,16 +184,18 @@ public class Main{
 
     private void authenticate() {
         if (this.serverApi.authRequired()) {
-            Console console = System.console();
-            String login;
-            char[] password;
-            if (console != null) {
-                login = console.readLine("Authentication required. Please enter login: ");
-                password = console.readPassword("Password: ");
-            } else {
-                login = configuration.getProperty("login");
-                password = configuration.getProperty("password").toCharArray();
+            String login = configuration.getProperty("login");
+            String password = configuration.getProperty("password");
+            if(login == null || login.isEmpty() || password == null || password.isEmpty()){
+                Console console = System.console();
+                if (console != null) {
+                    login = console.readLine("Authentication required. Please enter login: ");
+                    password = new String(console.readPassword("Password: "));
+                } else {
+                   throw new RuntimeException("Authentication required. Configuration has no login nor password. Use java.exe instead of javaw.exe to enter credentials");
+                }
             }
+
             this.sessionId = this.serverApi.authenticate(login, password);
         }
     }

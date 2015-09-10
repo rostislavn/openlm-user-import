@@ -32,9 +32,9 @@ public class WebServiceAPI implements IOpenLMServerAPI {
     }
 
     @Override
-    public String authenticate(String login, char[] pwd) {
+    public String authenticate(String login, String pwd) {
         UserAuthenticationRequest request = servicesFactory.createUserAuthenticationRequest();
-        request.setPassword(servicesFactory.createUserAuthenticationRequestPassword(new String(pwd)));
+        request.setPassword(servicesFactory.createUserAuthenticationRequestPassword(pwd));
         request.setUserName(servicesFactory.createUserAuthenticationRequestUserName(login));
         UserAuthenticationResponse response = adminApi.performUserAuthentication(request);
         return response.getSessionID().getValue();

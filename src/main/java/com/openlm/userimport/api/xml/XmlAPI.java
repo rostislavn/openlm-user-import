@@ -89,10 +89,10 @@ public class XmlAPI implements IOpenLMServerAPI {
     }
 
     @Override
-    public String authenticate(String login, char[] pwd) {
+    public String authenticate(String login, String pwd) {
         ULM auth = new ULM(Session.DEFAULT_ID, UserAuthentication);
         auth.name = login;
-        auth.pwd = new String(pwd);
+        auth.pwd = pwd;
         ULM authResponse = send(auth, SessionAuthenticationID);
         return authResponse.sessionId;
     }

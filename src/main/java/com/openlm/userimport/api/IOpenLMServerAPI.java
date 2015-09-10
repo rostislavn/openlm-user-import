@@ -10,7 +10,7 @@ import java.util.Optional;
  * This class represents...
  */
 public interface IOpenLMServerAPI {
-    String authenticate(String login, char[] pwd);
+    String authenticate(String login, String pwd);
     boolean authRequired();
     Map<String, String> loadGroups();
     Map<String, String> loadProjects();
